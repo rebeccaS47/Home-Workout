@@ -1,0 +1,58 @@
+﻿@model prjFinalProject3.Models.CouClaRou
+
+@{
+    ViewBag.Title = "課程內容";
+}
+
+<h1>
+    <u>課程內容</u>
+</h1>
+
+<div class="row">
+    <div class="col-md-3">
+        @foreach (var item in Model.courses)
+        {
+            <h3>
+                @item.CouCategory 訓練
+            </h3>
+            foreach (var x in Model.classs)
+            {
+                if (item.CouId == x.CouId)
+                {
+                    <h5>
+                        @Html.ActionLink(x.ClaName, "Classs", new { claid = x.ClaId })
+                        (@x.ClaId)
+                    </h5>
+                }
+
+            }
+        }
+    </div>
+    <div class="col-md-9">
+        <table class="table">
+            @{
+                var count = 0;
+                foreach (var item in Model.routines)
+                {
+                    if (count == 0)
+                    {
+                        <caption style="font-size:30px; text-align:center">
+                            @item.TableClasss1081747.ClaName
+                        </caption>
+                        <tr>
+                            <th>動作順序</th>
+                            <th>動作</th>
+                            <th>所需秒數</th>
+                        </tr>
+                        count++;
+                    }
+                    <tr>
+                        <td>@item.RouId</td>
+                        <td>@item.RouName</td>
+                        <td>@item.RouTime</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

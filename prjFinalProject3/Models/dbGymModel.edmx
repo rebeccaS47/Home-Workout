@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="netdbBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TableClasss1081747">
+          <Key>
+            <PropertyRef Name="ClaId" />
+          </Key>
+          <Property Name="ClaId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ClaName" Type="nvarchar" MaxLength="20" />
+          <Property Name="ClaCost" Type="int" />
+          <Property Name="CouId" Type="int" />
+        </EntityType>
+        <EntityType Name="TableCourses1081747">
+          <Key>
+            <PropertyRef Name="CouId" />
+          </Key>
+          <Property Name="CouId" Type="int" Nullable="false" />
+          <Property Name="CouCategory" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TableLocations1081747">
+          <Key>
+            <PropertyRef Name="LoId" />
+          </Key>
+          <Property Name="LoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LoTelephone" Type="nvarchar" MaxLength="15" />
+          <Property Name="LoAddress" Type="nvarchar(max)" />
+          <Property Name="LoPhoto" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TableMembers1081747">
+          <Key>
+            <PropertyRef Name="MemId" />
+          </Key>
+          <Property Name="MemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemName" Type="nvarchar" MaxLength="5" />
+          <Property Name="MemGender" Type="nvarchar" MaxLength="1" />
+          <Property Name="MemPhone" Type="nvarchar" MaxLength="10" />
+          <Property Name="MemEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemJoinDate" Type="date" />
+          <Property Name="MemBalence" Type="float" />
+          <Property Name="MemWeight" Type="float" />
+          <Property Name="MemHeight" Type="float" />
+        </EntityType>
+        <EntityType Name="TableRoutines1081747">
+          <Key>
+            <PropertyRef Name="RouId" />
+            <PropertyRef Name="ClaId" />
+          </Key>
+          <Property Name="RouId" Type="int" Nullable="false" />
+          <Property Name="RouName" Type="nvarchar" MaxLength="20" />
+          <Property Name="RouTime" Type="int" />
+          <Property Name="ClaId" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__TableClas__CouId__7AC720C5">
+          <End Role="TableCourses1081747" Type="Self.TableCourses1081747" Multiplicity="0..1" />
+          <End Role="TableClasss1081747" Type="Self.TableClasss1081747" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableCourses1081747">
+              <PropertyRef Name="CouId" />
+            </Principal>
+            <Dependent Role="TableClasss1081747">
+              <PropertyRef Name="CouId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TableRout__ClaId__7DA38D70">
+          <End Role="TableClasss1081747" Type="Self.TableClasss1081747" Multiplicity="1" />
+          <End Role="TableRoutines1081747" Type="Self.TableRoutines1081747" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableClasss1081747">
+              <PropertyRef Name="ClaId" />
+            </Principal>
+            <Dependent Role="TableRoutines1081747">
+              <PropertyRef Name="ClaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="netdbBModelStoreContainer">
+          <EntitySet Name="TableClasss1081747" EntityType="Self.TableClasss1081747" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableCourses1081747" EntityType="Self.TableCourses1081747" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableLocations1081747" EntityType="Self.TableLocations1081747" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableMembers1081747" EntityType="Self.TableMembers1081747" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableRoutines1081747" EntityType="Self.TableRoutines1081747" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TableClas__CouId__7AC720C5" Association="Self.FK__TableClas__CouId__7AC720C5">
+            <End Role="TableCourses1081747" EntitySet="TableCourses1081747" />
+            <End Role="TableClasss1081747" EntitySet="TableClasss1081747" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TableRout__ClaId__7DA38D70" Association="Self.FK__TableRout__ClaId__7DA38D70">
+            <End Role="TableClasss1081747" EntitySet="TableClasss1081747" />
+            <End Role="TableRoutines1081747" EntitySet="TableRoutines1081747" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="netdbBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TableClasss1081747">
+          <Key>
+            <PropertyRef Name="ClaId" />
+          </Key>
+          <Property Name="ClaId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ClaCost" Type="Int32" />
+          <Property Name="CouId" Type="Int32" />
+          <NavigationProperty Name="TableCourses1081747" Relationship="Self.FK__TableClas__CouId__7AC720C5" FromRole="TableClasss1081747" ToRole="TableCourses1081747" />
+          <NavigationProperty Name="TableRoutines1081747" Relationship="Self.FK__TableRout__ClaId__7DA38D70" FromRole="TableClasss1081747" ToRole="TableRoutines1081747" />
+        </EntityType>
+        <EntityType Name="TableCourses1081747">
+          <Key>
+            <PropertyRef Name="CouId" />
+          </Key>
+          <Property Name="CouId" Type="Int32" Nullable="false" />
+          <Property Name="CouCategory" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TableClasss1081747" Relationship="Self.FK__TableClas__CouId__7AC720C5" FromRole="TableCourses1081747" ToRole="TableClasss1081747" />
+        </EntityType>
+        <EntityType Name="TableLocations1081747">
+          <Key>
+            <PropertyRef Name="LoId" />
+          </Key>
+          <Property Name="LoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LoTelephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LoAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LoPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TableMembers1081747">
+          <Key>
+            <PropertyRef Name="MemId" />
+          </Key>
+          <Property Name="MemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="MemGender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="MemPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MemEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemJoinDate" Type="DateTime" Precision="0" />
+          <Property Name="MemBalence" Type="Double" />
+          <Property Name="MemWeight" Type="Double" />
+          <Property Name="MemHeight" Type="Double" />
+        </EntityType>
+        <EntityType Name="TableRoutines1081747">
+          <Key>
+            <PropertyRef Name="RouId" />
+            <PropertyRef Name="ClaId" />
+          </Key>
+          <Property Name="RouId" Type="Int32" Nullable="false" />
+          <Property Name="RouName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RouTime" Type="Int32" />
+          <Property Name="ClaId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TableClasss1081747" Relationship="Self.FK__TableRout__ClaId__7DA38D70" FromRole="TableRoutines1081747" ToRole="TableClasss1081747" />
+        </EntityType>
+        <Association Name="FK__TableClas__CouId__7AC720C5">
+          <End Role="TableCourses1081747" Type="Self.TableCourses1081747" Multiplicity="0..1" />
+          <End Role="TableClasss1081747" Type="Self.TableClasss1081747" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableCourses1081747">
+              <PropertyRef Name="CouId" />
+            </Principal>
+            <Dependent Role="TableClasss1081747">
+              <PropertyRef Name="CouId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TableRout__ClaId__7DA38D70">
+          <End Role="TableClasss1081747" Type="Self.TableClasss1081747" Multiplicity="1" />
+          <End Role="TableRoutines1081747" Type="Self.TableRoutines1081747" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableClasss1081747">
+              <PropertyRef Name="ClaId" />
+            </Principal>
+            <Dependent Role="TableRoutines1081747">
+              <PropertyRef Name="ClaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbGymEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TableClasss1081747" EntityType="Self.TableClasss1081747" />
+          <EntitySet Name="TableCourses1081747" EntityType="Self.TableCourses1081747" />
+          <EntitySet Name="TableLocations1081747" EntityType="Self.TableLocations1081747" />
+          <EntitySet Name="TableMembers1081747" EntityType="Self.TableMembers1081747" />
+          <EntitySet Name="TableRoutines1081747" EntityType="Self.TableRoutines1081747" />
+          <AssociationSet Name="FK__TableClas__CouId__7AC720C5" Association="Self.FK__TableClas__CouId__7AC720C5">
+            <End Role="TableCourses1081747" EntitySet="TableCourses1081747" />
+            <End Role="TableClasss1081747" EntitySet="TableClasss1081747" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TableRout__ClaId__7DA38D70" Association="Self.FK__TableRout__ClaId__7DA38D70">
+            <End Role="TableClasss1081747" EntitySet="TableClasss1081747" />
+            <End Role="TableRoutines1081747" EntitySet="TableRoutines1081747" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="netdbBModelStoreContainer" CdmEntityContainer="dbGymEntities">
+          <EntitySetMapping Name="TableClasss1081747">
+            <EntityTypeMapping TypeName="netdbBModel.TableClasss1081747">
+              <MappingFragment StoreEntitySet="TableClasss1081747">
+                <ScalarProperty Name="ClaId" ColumnName="ClaId" />
+                <ScalarProperty Name="ClaName" ColumnName="ClaName" />
+                <ScalarProperty Name="ClaCost" ColumnName="ClaCost" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableCourses1081747">
+            <EntityTypeMapping TypeName="netdbBModel.TableCourses1081747">
+              <MappingFragment StoreEntitySet="TableCourses1081747">
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="CouCategory" ColumnName="CouCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableLocations1081747">
+            <EntityTypeMapping TypeName="netdbBModel.TableLocations1081747">
+              <MappingFragment StoreEntitySet="TableLocations1081747">
+                <ScalarProperty Name="LoId" ColumnName="LoId" />
+                <ScalarProperty Name="LoName" ColumnName="LoName" />
+                <ScalarProperty Name="LoTelephone" ColumnName="LoTelephone" />
+                <ScalarProperty Name="LoAddress" ColumnName="LoAddress" />
+                <ScalarProperty Name="LoPhoto" ColumnName="LoPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableMembers1081747">
+            <EntityTypeMapping TypeName="netdbBModel.TableMembers1081747">
+              <MappingFragment StoreEntitySet="TableMembers1081747">
+                <ScalarProperty Name="MemId" ColumnName="MemId" />
+                <ScalarProperty Name="MemName" ColumnName="MemName" />
+                <ScalarProperty Name="MemGender" ColumnName="MemGender" />
+                <ScalarProperty Name="MemPhone" ColumnName="MemPhone" />
+                <ScalarProperty Name="MemEmail" ColumnName="MemEmail" />
+                <ScalarProperty Name="MemJoinDate" ColumnName="MemJoinDate" />
+                <ScalarProperty Name="MemBalence" ColumnName="MemBalence" />
+                <ScalarProperty Name="MemWeight" ColumnName="MemWeight" />
+                <ScalarProperty Name="MemHeight" ColumnName="MemHeight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableRoutines1081747">
+            <EntityTypeMapping TypeName="netdbBModel.TableRoutines1081747">
+              <MappingFragment StoreEntitySet="TableRoutines1081747">
+                <ScalarProperty Name="RouId" ColumnName="RouId" />
+                <ScalarProperty Name="RouName" ColumnName="RouName" />
+                <ScalarProperty Name="RouTime" ColumnName="RouTime" />
+                <ScalarProperty Name="ClaId" ColumnName="ClaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

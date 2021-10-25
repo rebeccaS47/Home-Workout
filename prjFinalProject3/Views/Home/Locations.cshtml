@@ -1,0 +1,61 @@
+﻿@model IPagedList<prjFinalProject3.Models.TableLocations1081747>
+
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "全國據點";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<h1>
+    <u>全國據點</u>
+</h1>
+
+<form method="post" action="@Url.Action("SearchLo")">
+    <div class="form-inline">
+        <div class="form-group">
+                <select id="送貨城市" name="city" class="form-control">
+                    <option value="">請選擇縣市</option>
+                    <option value="台北市">台北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="台中市">台中市</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>
+                </select>
+                <input type="submit" value="查詢" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-info">
+        <strong>無符合之資料</strong>
+    </div>
+}
+else
+{
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-12 col-md-4" style="margin-top:10px;">
+            <div class="img-thumbnail">
+                <img src="@item.LoPhoto" class="img-responsive" style="width:100%; height:210px;" />
+                <h4>@item.LoName</h4>
+                <p>電話:@item.LoTelephone</p>
+                <p>地址:@item.LoAddress</p>
+                <p>
+                    <a href="https://www.google.com/maps/place/@item.LoAddress"
+                       class="btn btn-success" target="_blank">地圖</a>
+                </p>
+            </div>
+        </div>
+    }
+</div>
+}
+    
+<center>
+    @Html.PagedListPager(Model, page => Url.Action("Locations", new { page }))
+</center>

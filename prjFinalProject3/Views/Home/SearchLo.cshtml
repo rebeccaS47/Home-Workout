@@ -1,0 +1,57 @@
+﻿@model IEnumerable<prjFinalProject3.Models.TableLocations1081747>
+
+@{
+    ViewBag.Title = "據點查詢";
+}
+
+<h1>
+    <u>據點查詢</u>
+</h1>
+
+<form method="post" action="@Url.Action("SearchLo")">
+    <div class="form-inline">
+        <div class="form-group">
+            <select id="送貨城市" name="city" class="form-control">
+                <option value="">請選擇縣市</option>
+                <option value="台北市">台北市</option>
+                <option value="新北市">新北市</option>
+                <option value="桃園市">桃園市</option>
+                <option value="台中市">台中市</option>
+                <option value="台南市">台南市</option>
+                <option value="高雄市">高雄市</option>
+            </select>
+            <input type="submit" value="查詢" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoTelephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoAddress)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoTelephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoAddress)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<prjFinalProject3.Models.TableMembers1081747>
+
+@{
+    ViewBag.Title = "會員資料";
+}
+
+<h1><u>會員資料</u></h1>
+<h3>
+    @Html.ActionLink("新增會員", "CreateMem")
+</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemJoinDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemBalence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemHeight)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemJoinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemBalence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemHeight)
+            </td>
+            <td>
+                <a href="@Url.Action("EditMem")?MemId=@item.MemId" class="btn btn-warning">編輯</a>
+                <a href="@Url.Action("DeleteMem")?MemId=@item.MemId" class="btn btn-danger"
+                   onclick="return confirm('確定要刪除 @item.MemName 的會員資料嗎? ');">刪除</a>
+            </td>
+        </tr>
+    }
+</table>
+

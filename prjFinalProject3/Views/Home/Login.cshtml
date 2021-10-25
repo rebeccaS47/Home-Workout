@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "會員登入";
+}
+<br />
+<form method="post" action="@Url.Action("Login")">
+    <div class="panel panel-primary">
+        <div class="panel-heading">會員登入</div>
+        <div class="panel-body">
+            <p>
+                帳號:
+                <input type="text" class="form-control" name="txtUid" required />
+            </p>
+            <p>
+                密碼:
+                <input type="password" class="form-control" name="txtPwd" required />
+            </p>
+            <p>
+                <input type="submit" class="btn btn-primary" value="查詢" />
+            </p>
+            <p class="text-danger">@ViewBag.Err</p>
+            <br />
+            <p>
+                Uid:{ "jasper", "anita", "tom" }; Pwd:{ "123", "456", "789" }
+            </p>
+        </div>
+    </div>
+</form>
+
